@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'booking/style.css' %}">
+</head>
+<body>
+    {% include 'booking/header.html' %}
+    
+    <div class="container">
+        <h1>Регистрация</h1>
+        
+        <div class="form-card">
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+            
+            <form method="POST">
+                {% csrf_token %}
+                <label>Имя пользователя:</label>
+                <input type="text" name="username" required>
+                
+                <label>Пароль:</label>
+                <input type="password" name="password" required>
+                
+                <label>Повторите пароль:</label>
+                <input type="password" name="password2" required>
+                
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <p class="form-link">Уже есть аккаунт? <a href="/login/">Войти</a></p>
+        </div>
+    </div>
+    
+    {% include 'booking/footer.html' %}
+</body>
+</html>

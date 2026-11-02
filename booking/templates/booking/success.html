@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Успешно!</title>
+    <link rel="stylesheet" href="{% static 'booking/style.css' %}">
+</head>
+<body>
+    {% include 'booking/header.html' %}
+    
+    <div class="container success-page">
+        <h1>✅ Бронирование успешно оформлено!</h1>
+        <p>Мы свяжемся с вами для подтверждения.</p>
+        <a href="/" class="btn">Вернуться на главную</a>
+    </div>
+    
+    {% include 'booking/footer.html' %}
+</body>
+</html>

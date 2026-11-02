@@ -1,0 +1,16 @@
+<header class="site-header">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="/">Лазурный берег</a>
+        </div>
+        <div class="header-auth">
+            {% if user.is_authenticated %}
+                <span class="welcome-text">Привет, <b>{{ user.username }}</b>!</span>
+                <a href="/logout/" class="btn btn-logout">Выйти</a>
+            {% else %}
+                <a href="/login/" class="btn btn-login">Войти</a>
+                <a href="/register/" class="btn btn-register">Регистрация</a>
+            {% endif %}
+        </div>
+    </div>
+</header>

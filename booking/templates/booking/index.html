@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Лазурный берег</title>
+    <link rel="stylesheet" href="{% static 'booking/style.css' %}">
+</head>
+<body>
+    {% include 'booking/header.html' %}
+    
+    <div class="welcome-section" style="background: url('{% static 'booking/images/welcome.jpg' %}') center/cover no-repeat;">
+        <div class="welcome-overlay">
+            <h1>Добро пожаловать в гостиничный комплекс «Лазурный берег»!</h1>
+            <p>Уютные номера, живописная территория и бассейн под открытым небом. 
+               Идеальное место для отдыха всей семьёй.</p>
+            <a href="#rooms" class="btn btn-welcome">Посмотреть номера</a>
+        </div>
+    </div>
+    
+    <div class="features-section">
+        <h2>Почему выбирают нас</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🏊</div>
+                <h3>Бассейн</h3>
+                <p>Большой открытый бассейн с подогревом</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🍽️</div>
+                <h3>Ресторан</h3>
+                <p>Вкусные завтраки и ужины каждый день</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🚗</div>
+                <h3>Парковка</h3>
+                <p>Бесплатная охраняемая парковка</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📶</div>
+                <h3>Wi-Fi</h3>
+                <p>Быстрый интернет на всей территории</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" id="rooms">
+        <h2>Список номеров:</h2>
+        
+        {% for room in rooms %}
+            <div class="room-card">
+                <div class="room-image-wrapper">
+                    {% if room.image %}
+                        <img src="{{ room.image.url }}" alt="Номер {{ room.room_number }}">
+                    {% else %}
+                        <div class="no-image">Нет фото</div>
+                    {% endif %}
+                </div>
+                <div class="room-info">
+                    <h3>Номер {{ room.room_number }}</h3>
+                    <p><b>Корпус:</b> {{ room.building.name }}</p>
+                    <p><b>Мест:</b> {{ room.capacity }} | <b>Цена:</b> {{ room.price }} руб./ночь</p>
+                    <a href="/book/{{ room.id }}/" class="btn">Забронировать</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+    {% include 'booking/footer.html' %}
+</body>
+</html>

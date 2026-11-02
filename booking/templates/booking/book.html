@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Бронирование</title>
+    <link rel="stylesheet" href="{% static 'booking/style.css' %}">
+</head>
+<body>
+    {% include 'booking/header.html' %}
+    
+    <div class="container">
+        <h1>Бронирование номера</h1>
+        
+        <div class="form-card">
+            <h2>Номер {{ room.room_number }}</h2>
+            <p><b>Корпус:</b> {{ room.building.name }}</p>
+            <p><b>Цена:</b> {{ room.price }} руб./ночь</p>
+            <p><b>Вместимость:</b> до {{ room.capacity }} чел.</p>
+            
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+            
+            <form method="POST">
+                {% csrf_token %}
+                <label>Ваше ФИО:</label>
+                <input type="text" name="guest_name" required>
+                
+                <label>Дата заезда:</label>
+                <input type="date" name="start_date" required>
+                
+                <label>Дата выезда:</label>
+                <input type="date" name="end_date" required>
+                
+                <label>Количество человек:</label>
+                <input type="number" name="num_people" min="1" max="{{ room.capacity }}" required>
+                
+                <button type="submit">Забронировать</button>
+            </form>
+        </div>
+    </div>
+    
+    {% include 'booking/footer.html' %}
+</body>
+</html>

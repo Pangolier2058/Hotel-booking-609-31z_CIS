@@ -1,0 +1,414 @@
+/* ===== ПЛАВНАЯ ПРОКРУТКА ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== ОБЩИЕ СТИЛИ ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+h2 {
+    color: #34495e;
+}
+
+/* ===== ШАПКА САЙТА ===== */
+.site-header {
+    background: #2c3e50;
+    color: white;
+    width: 100%;
+    padding: 15px 0;
+}
+
+.header-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.header-logo a:hover {
+    color: #ecf0f1;
+}
+
+.header-auth {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-auth .welcome-text {
+    color: white;
+    font-size: 15px;
+}
+
+/* ===== СЕКЦИЯ ПРИВЕТСТВИЯ ===== */
+.welcome-section {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.welcome-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 700px;
+    color: white;
+}
+
+.welcome-overlay h1 {
+    color: white;
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.welcome-overlay p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.btn-welcome {
+    background: #27ae60;
+    font-size: 18px;
+    padding: 15px 30px;
+}
+
+.btn-welcome:hover {
+    background: #219150;
+}
+
+/* ===== СЕКЦИЯ ПРЕИМУЩЕСТВ ===== */
+.features-section {
+    background: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+.features-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.feature-item {
+    padding: 20px;
+}
+
+.feature-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.feature-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.feature-item p {
+    font-size: 14px;
+    color: #7f8c8d;
+    line-height: 1.5;
+}
+
+/* ===== КОНТЕЙНЕР ===== */
+.container {
+    max-width: 900px;
+    margin: 60px auto 0;
+    padding: 20px;
+    flex: 1;
+    width: 100%;
+}
+
+/* ===== КАРТОЧКА НОМЕРА ===== */
+.room-card {
+    background: white;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    max-width: 800px;
+}
+
+.room-image-wrapper {
+    width: 320px;
+    height: 220px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.room-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.no-image {
+    width: 100%;
+    height: 100%;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+}
+
+.room-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.room-info h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 22px;
+}
+
+.room-info p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.room-info b {
+    color: #2980b9;
+}
+
+/* ===== КНОПКИ ===== */
+.btn {
+    display: inline-block;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    background: #27ae60;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.btn:hover {
+    background: #219150;
+}
+
+.btn-login {
+    background: #27ae60;
+}
+
+.btn-register {
+    background: #2980b9;
+}
+
+.btn-register:hover {
+    background: #1f6fa0;
+}
+
+.btn-logout {
+    background: #e74c3c;
+}
+
+.btn-logout:hover {
+    background: #c0392b;
+}
+
+/* ===== ФОРМЫ ===== */
+.form-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 450px;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-card h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.form-card p {
+    font-size: 15px;
+}
+
+.form-card label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-card input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-card input:focus {
+    outline: none;
+    border-color: #2980b9;
+}
+
+.form-card button {
+    background: #27ae60;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.form-card button:hover {
+    background: #219150;
+}
+
+.error-message {
+    color: #e74c3c;
+    background: #fdecea;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 0 15px 0;
+}
+
+.form-link {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.form-link a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+.form-link a:hover {
+    text-decoration: underline;
+}
+
+/* ===== ПОДВАЛ САЙТА ===== */
+.site-footer {
+    background: #2c3e50;
+    color: white;
+    width: 100%;
+    padding: 30px 0 15px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-block {
+    flex: 1;
+}
+
+.footer-block:first-child {
+    text-align: left;
+}
+
+.footer-block:nth-child(2) {
+    text-align: center;
+}
+
+.footer-block:last-child {
+    text-align: right;
+}
+
+.footer-block h4 {
+    margin-top: 0;
+    color: #ecf0f1;
+    font-size: 16px;
+}
+
+.footer-block p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #bdc3c7;
+}
+
+.footer-copy {
+    max-width: 900px;
+    margin: 20px auto 0;
+    padding: 15px 20px 0;
+    border-top: 1px solid #34495e;
+    text-align: center;
+    font-size: 13px;
+    color: #95a5a6;
+}
+
+/* ===== СТРАНИЦА УСПЕШНОГО БРОНИРОВАНИЯ ===== */
+.success-page {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.success-page h1 {
+    color: #27ae60;
+}
+
+.success-page p {
+    font-size: 16px;
+    color: #555;
+}
+
+.success-page .btn {
+    margin-top: 20px;
+}
